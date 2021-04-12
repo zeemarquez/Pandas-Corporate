@@ -48,3 +48,21 @@ headers = {
     'Accept: text/csv',
 }
 # %%
+
+# %%
+driver.get('https://www.eventoplus.com/directorio/resultados/agencias-de-eventos/')
+driver.find_element_by_id('onetrust-accept-btn-handler').click()
+# %%
+driver.execute_script("window.open('');")
+driver.switch_to.window(driver.window_handles[1])
+driver.get('https://www.eventoplus.com/directorio/proveedores/6088/bluemice/')
+# %%
+def getPhone(link):
+        driver.execute_script("window.open('');")
+        driver.switch_to.window(driver.window_handles[1])
+        driver.get(link)
+        tlf = driver.find_element_by_xpath('/html/body/div[4]/ul[2]/li/div[2]/div[5]/div[3]/div[2]/a[2]').get_attribute("href").replace('tel:','')
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
+        return tlf
+
