@@ -40,3 +40,11 @@ nextPage = driver.find_element_by_xpath("//*[@aria-label='Página Siguiente']")
 # %%
 driver.execute_script("window.scrollBy(0, 400)")
 # %%
+
+# %%
+response = requests.get('https://datos.gob.es/apidata/catalog/dataset/title/mirador?_sort=title&_pageSize=10&_page=0')
+# %%
+headers = {
+    'Accept: text/csv',
+}
+# %%

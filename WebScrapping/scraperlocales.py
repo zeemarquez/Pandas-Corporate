@@ -22,6 +22,8 @@ import random as rd
 chromedriver_path = "/Users/zeemarquez/Documents/Python/Pandas Corporate/WebScrapping/chromedriver"
 download_folder = "/Users/zeemarquez/Documents/Python/Pandas Corporate/Locales"
 
+# CLASES
+
 class SeleniumDriver:
 
     def __init__(self, headless = False, driverPath = None):
@@ -291,6 +293,8 @@ class Belbex:
         print('Elements:',len(self.items))
 
 
+# HELPERS FUNCTIONS
+
 def cleanText(string):
     string = string.replace('ñ','n')
     string = string.replace('á','a')
@@ -361,66 +365,23 @@ def deleteDuplicates(filepath):
     csvwrite = open(filepath,"w")
     csvwrite.writelines(f)
 
-# MAIN 
+# MAIN PROGRAM
 
-'''
-fotocasa = Fotocasa()
-fotocasa.start()
-fotocasa.closeDriver()
-
-
-print('Elementos: '+ str(len(fotocasa.items)))
-
-writeToCSV('/Users/zeemarquez/Documents/Python/Pandas Corporate/WebScrapping/locales_fotocasa.csv', fotocasa.items, headers= Item.headers)
-
-'''
-
-belbex = Belbex()
-belbex.start()
-belbex.closeDriver()
-
-print('Elementos: '+ str(len(belbex.items)))
-
-writeToCSV('/Users/zeemarquez/Documents/Python/Pandas Corporate/WebScrapping/locales_belbex.csv', belbex.items, headers= Item.headers)
-
-'''
-    
-driver = get_driver_headless()
-openurl("https://www.idealista.com/alquiler-locales/madrid-madrid/pagina-1.htm")
-
-cards = getCardsElements()
-
-items = getItems(cards)
-
-driver.close()
-
-writeToCSV("/Users/zeemarquez/Documents/Python/Wallapop/data.csv", items)
-
-# UPLOAD DATA TO GOOGLE SHEETS
-
-gc = gspread.service_account("/Users/zeemarquez/Documents/Python/Wallapop/credentials.json")
-
-sh = gc.open("Wallapop python").sheet1
-
-table = sh.get_all_values()
-
-deleteDuplicates("/Users/zeemarquez/Documents/Python/Wallapop/data.csv")
-
-rows = filterExistingRows(csvtovalues("/Users/zeemarquez/Documents/Python/Wallapop/data.csv"))
-
-sh.append_rows(rows)
-print("\nSheet Updated Correctly!\n")
+def main_fotocasa():
+    fotocasa = Fotocasa()
+    fotocasa.start()
+    fotocasa.closeDriver()
 
 
-table = sh.get_all_values()
-sh125 = gc.open("Wallapop python").get_worksheet(1)
+    print('Elementos: '+ str(len(fotocasa.items)))
 
-filter_125_rows = []
+    writeToCSV('/Users/zeemarquez/Documents/Python/Pandas Corporate/WebScrapping/locales_fotocasa.csv', fotocasa.items, headers= Item.headers)
 
-for row in table:
-    if isInRow('125', row):
-        filter_125_rows.append(row)
+def main_belbex():
+    belbex = Belbex()
+    belbex.start()
+    belbex.closeDriver()
 
-sh125.append_rows(filter_125_rows)
+    print('Elementos: '+ str(len(belbex.items)))
 
-'''
+    writeToCSV('/Users/zeemarquez/Documents/Python/Pandas Corporate/WebScrapping/locales_belbex.csv', belbex.items, headers= Item.headers)
