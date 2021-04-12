@@ -1,15 +1,3 @@
-'''
-item class: 
-
-client id: 
-
-client secret: 
-
-alquiler locales madrid: https://www.idealista.com/alquiler-locales/madrid-madrid/pagina-1.htm
-
-siguiente pagina: "icon-arrow-right-after" 
-
-''' 
 import selenium
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -17,10 +5,6 @@ from selenium.webdriver.chrome.options import Options
 import gspread
 import time
 import random as rd
-
-
-chromedriver_path = "/Users/zeemarquez/Documents/Python/Pandas Corporate/WebScrapping/chromedriver"
-download_folder = "/Users/zeemarquez/Documents/Python/Pandas Corporate/Locales"
 
 # CLASES
 
