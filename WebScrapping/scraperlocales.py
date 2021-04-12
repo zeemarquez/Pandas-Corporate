@@ -69,7 +69,6 @@ class Item:
         self.m2 = m2
         self.observations = observations
     
-    
     def getcsvline(self):
         return cleanText(self.title) + ";" + cleanText(self.price) + ";" + cleanText(self.m2) + ";" + cleanText(self.phone) + "; " + cleanText(self.description) + " ;" + self.link + ";" + self.direction + ";" + self.observations + ";"
     
